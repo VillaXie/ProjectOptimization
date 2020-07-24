@@ -43,6 +43,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':libcommon')
+    implementation project(':libnavannotation')
+    //如果你使用kotlin,这里需要使用 kapt project
+    kapt project(":libnavcompiler")
 
     //错误收集
     implementation 'com.tencent.bugly:crashreport:latest.release'

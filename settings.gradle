@@ -1,0 +1,5 @@
+include ':libnavcompiler'
+include ':libnavannotation'
+include ':libcommon'
+include ':app'
+rootProject.name = "Project Optimization"

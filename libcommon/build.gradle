@@ -1,0 +1,101 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.compileSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding{
+        enabled=true
+    }
+}
+
+dependencies {
+    api fileTree(dir: "libs", include: ["*.jar"])
+
+    //兼容包
+    api "androidx.appcompat:appcompat:$appCompatVersion"
+
+    // kotlin及其扩展支持
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "androidx.core:core-ktx:$core_ktx_version"
+
+    //material组件
+    api "com.google.android.material:material:$materialVersion"
+
+    //约束布局
+    api "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    //navigation导航
+    api "androidx.navigation:navigation-fragment:$navigationVersion"
+    api "androidx.navigation:navigation-ui:$navigationVersion"
+
+    //包含了 viewModel 和 liveData
+    api "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+
+    //注解使用生命周期编译器
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+
+    //paging分页组件
+    api "androidx.paging:paging-runtime:$pagingVersion"
+
+    //页面刷新组件
+    api "com.scwang.smartrefresh:SmartRefreshLayout:$smartrefreshVersion"
+    api "com.scwang.smartrefresh:SmartRefreshHeader:$smartrefreshVersion"
+
+    //viewpager2 可以禁止预加载
+    api "androidx.viewpager2:viewpager2:$viewPagerVersion"
+
+    //视频播放组件
+    api "com.google.android.exoplayer:exoplayer-core:$exoplayerVersion"
+    api "com.google.android.exoplayer:exoplayer-dash:$exoplayerVersion"
+    api "com.google.android.exoplayer:exoplayer-ui:$exoplayerVersion"
+
+    //room数据库
+    api "androidx.room:room-runtime:$roomVersion"
+    api "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    //图片加载
+    api "com.github.bumptech.glide:glide:$glideVersion"
+    api "jp.wasabeef:glide-transformations:$glideTransVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+
+    //camera
+    api 'androidx.camera:camera-core:1.0.0-beta06'
+    api 'androidx.camera:camera-camera2:1.0.0-beta06'
+    api 'androidx.camera:camera-view:1.0.0-alpha13'
+    api 'androidx.camera:camera-extensions:1.0.0-alpha13'
+
+    //workManager
+    api "androidx.work:work-runtime:$workVersion"
+
+    //gesture imageView
+    api 'com.github.chrisbanes:PhotoView:2.3.0@aar'
+
+    //aliYun oss
+    api 'com.aliyun.dpa:oss-android-sdk:2.9.4'
+
+    //fastJson解析
+    api "com.alibaba:fastjson:$fastJsonVersion"
+
+}

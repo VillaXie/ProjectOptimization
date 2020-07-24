@@ -1,0 +1,13 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(':libnavannotation')
+    implementation "com.alibaba:fastjson:$fastJsonVersion"
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc4'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
